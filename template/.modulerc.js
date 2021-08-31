@@ -1,11 +1,11 @@
 module.exports = {
-  name: 'module0',
+  name: 'module1',
   filename: 'remoteEntry.js',
   exposes: {
-    './App': './src/App',
+    './RemoteApp': './src/containers/RemoteApp',
   },
   remotes: {
-    module1: `module1@http://localhost:3001/remoteEntry.js`,
+    module1: `module1@http://localhost:3000/remoteEntry.js`,
   },
   shared: {
     react: {

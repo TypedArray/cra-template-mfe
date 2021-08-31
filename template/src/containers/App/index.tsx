@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from './App.module.css';
-import logo from './logo.svg';
+import ErrorBoundary from '../../components/ErrorBoundary';
+import styles from './index.module.css';
 
 const RemoteModule1 = React.lazy(
   // @ts-ignore
-  () => import('module1/App')
+  () => import('module1/RemoteApp')
 );
 
 function App() {
@@ -12,9 +12,8 @@ function App() {
     <div className={styles.conatiner}>
       <header className={styles.header}>
         <h1>APP</h1>
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          Edit <code>src/App/index.tsx</code> and save to reload.
         </p>
         <a
           className={styles.link}
@@ -25,11 +24,11 @@ function App() {
           Learn React
         </a>
       </header>
-      <div style={{ border: '5px red solid', backgroundColor: '#ccc' }}>
-        <React.Suspense fallback={<h1>Loading...</h1>}>
+      <React.Suspense fallback={<h1>Loading...</h1>}>
+        <ErrorBoundary>
           <RemoteModule1 />
-        </React.Suspense>
-      </div>
+        </ErrorBoundary>
+      </React.Suspense>
     </div>
   );
 }
